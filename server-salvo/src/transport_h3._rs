@@ -1,0 +1,147 @@
+use crate::channels::{drop_channel, send_channel, set_channel, set_session};
+use crate::points::_router::{data_ping, data_router};
+use crate::types::TransportState;
+use bytes::Bytes;
+use salvo::{handler, Request};
+use shared::crypto::encrypt_to_bytes;
+use shared::DataResults;
+use std::sync::atomic::Ordering;
+use tokio::io::{AsyncReadExt, AsyncWriteExt};
+use tokio::sync::mpsc;
+
+#[handler]
+pub async fn transport_data(req: &mut Request) -> anyhow::Result<()> {
+    let session = req
+        .web_transport_mut()
+        .await
+        .map_err(|e| anyhow::anyhow!("transport_data::session {e:?}"))?;
+    let session_id = session.session_id();
+
+    let id = uuid::Uuid::new_v4().to_string();
+
+    let state = TransportState::default();
+
+    let (session_sender, mut session_receiver) = mpsc::unbounded_channel::<DataResults>();
+
+    set_channel(&id, session_sender).await;
+
+    let idu = 1;
+    set_session(&id, idu, "", "", "", &[0; 32]).await;
+
+    let mut datagram_reader = session.datagram_reader();
+    let mut datagram_sender = session.datagram_sender();
+
+    tracing::info!("CONNECT id:{id}");
+
+    let id_copy = id.clone();
+
+    let mut interval_timer = tokio::time::interval(chrono::Duration::seconds(5).to_std()?);
+
+    loop {
+        tokio::select! {
+            _ = interval_timer.tick() => {
+                let awake = state.awake.load(Ordering::Relaxed);
+                if awake > 1 {
+                    break;
+                }
+                datagram_sender.send_datagram(data_ping(state.clone())?)?;
+                send_channel(&id_copy, DataResults::Message("как дела?".to_string())).await;
+            }
+
+            bytes = session_receiver.recv() => {
+                if let Some(bytes)= bytes.and_then(|b|encrypt_to_bytes(b).ok()) {
+                    datagram_sender.send_datagram(bytes)?;
+                    /*
+                    let mut uni_stream = session.open_uni(session_id).await?;
+                    for chunk in bytes.chunks(1000) {
+                        uni_stream.write_all(chunk).await?;
+                    }
+                    uni_stream.shutdown().await?;
+                    println!("SEND UNI");
+
+                    let bi_stream = session.open_bi(session_id).await?;
+                    let (mut bi_send, _) = BidiStream::split(bi_stream);
+                    //pin!(bi_send);
+                    //pin!(bi_recv);
+                    for chunk in bytes.chunks(1000) {
+                        bi_send.write_all(chunk).await?;
+                    }
+                    bi_send.shutdown().await?;
+                    println!("SEND BI");
+                    */
+                    /*
+                    datagram_sender.send_datagram(bytes)?;
+                    println!("SEND DATAGRAM");
+                    */
+                }
+            }
+
+            /*bi_stream = session.accept_bi() => {
+                match bi_stream {
+                    Ok(Some(BidiStream(_, stream))) => {
+                        let (send, recv) = salvo::proto::quic::BidiStream::split(stream);
+                        //pin!(send);
+                        pin!(recv);
+                        let mut buf = Vec::new();
+                        recv.read_to_end(&mut buf).await?;
+                        bi_send = Some(send);
+                        // tokio::spawn( async move { log_result!(echo_stream(send, recv).await); });
+                    }
+                    Err(e) => {
+                        tracing::info!("session.bi_stream[1] {e:?}");
+                    }
+                    _=>{
+                        tracing::info!("session.bi_stream[2]");
+                    }
+                }
+            }
+            */
+
+            uni_stream = session.accept_uni() => {
+                match uni_stream {
+                    Ok(Some((id,mut uni_stream))) => {
+                        // println!("next uni {id:?}");
+                        let mut send = session.open_uni(id).await?;
+                        let mut buf = Vec::new();
+                        uni_stream.read_to_end(&mut buf).await?;
+                        let bytes = Bytes::from(buf);
+                        let result = data_router(&bytes, state.clone()).await?;
+                        if !result.is_empty() {
+                            for chunk in result.chunks(100) {
+                                send.write_all(chunk).await?;
+                            }
+                        }
+                    }
+                    Err(e) => {
+                        tracing::info!("session.accept_uni[1]  {e:?}");
+                    }
+                    _=>{
+                        tracing::info!("session.accept_uni[2]");
+                    }
+                }
+            }
+            datagram = datagram_reader.read_datagram() => {
+                match datagram {
+                    Ok(datagram) => {
+                        let bytes = datagram.into_payload();
+                        let result = data_router(&bytes, state.clone()).await?;
+                        if !result.is_empty() {
+                            let l = result.len();
+                            if let Err(e) = datagram_sender.send_datagram(result) {
+                                tracing::info!("datagram_reader ERR[1] len:{l} {e:?}");
+                            }
+                        }
+                    }
+                    Err(e) => {
+                        tracing::info!("datagram_reader ERR[2] {e:?}");
+                    }
+                }
+            }
+        }
+    }
+
+    tracing::info!("Finished handling session id:{id}");
+    drop_channel(&id).await;
+
+    Ok(())
+}

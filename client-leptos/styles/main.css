@@ -1,0 +1,21 @@
+@layer components {
+    .block-main {
+        @apply w-full h-full flex flex-col;
+    }
+    .block-header {
+        @apply shrink-0 grow-0;
+    }
+    .block-content {
+        @apply grow;
+    }
+    .content-container {
+        @apply max-w-5xl m-auto h-full;
+        @apply bg-gray-300 dark:bg-gray-800;
+    }
+    .content-wrapper {
+        @apply h-full py-2 md:flex gap-2;
+    }
+    .scrolled {
+        @apply overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-300 dark:scrollbar-thumb-gray-700 dark:scrollbar-track-gray-800;
+    }
+}

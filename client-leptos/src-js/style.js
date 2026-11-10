@@ -1,0 +1,113 @@
+import { defaultHighlightStyle, HighlightStyle, syntaxHighlighting } from '@codemirror/language'
+import { EditorView } from '@codemirror/view'
+import { tags as t } from '@lezer/highlight'
+
+const cmTheme = EditorView.theme({
+	'&': { height: '100%' },
+	'.cm-scroller': {
+		fontFamily: 'Monaspace Argon, ui-monospace, monospace',
+		background: 'var(--bg)',
+	},
+	'.cm-content': { caretColor: 'var(--accent)' },
+	'.cm-gutters': { background: 'transparent', border: 'none' },
+	'.cm-line': { color: 'var(--text)' },
+	'.cm-selectionBackground': {
+		background: 'var(--accent-alpha)',
+	},
+})
+
+const pandaGroups = [
+	['var(--comment)', t.comment, t.blockComment, t.lineComment, t.docComment, t.quote],
+	['var(--primary)', t.paren, t.brace, t.color, t.bracket, t.angleBracket],
+	['var(--fg)', t.name, t.punctuation, t.standard, t.annotation, t.content, t.compareOperator, t.arithmeticOperator],
+	['var(--meta)', t.contentSeparator, t.documentMeta, t.macroName, t.separator, t.deleted, t.atom, t.meta, t.null],
+	[
+		'var(--operator)',
+		t.definitionOperator,
+		t.controlOperator,
+		t.bitwiseOperator,
+		t.updateOperator,
+		t.logicOperator,
+		t.derefOperator,
+		t.typeOperator,
+		t.namespace,
+		t.operator,
+		t.changed,
+		t.invalid,
+	],
+	[
+		'var(--keyword)',
+		t.definitionKeyword,
+		t.operatorKeyword,
+		t.controlKeyword,
+		t.moduleKeyword,
+		t.tagName,
+		t.keyword,
+		t.constant,
+		t.function,
+		t.list,
+		t.self,
+		t.monospace,
+	],
+	['var(--regex)', t.escape, t.special, t.regexp],
+	[
+		'var(--property)',
+		t.name,
+		t.squareBracket,
+		t.typeName,
+		t.variableName,
+		t.function,
+		t.definition,
+		t.propertyName,
+		t.unit,
+		t.attributeName,
+	],
+	['var(--string)', t.string, t.docString, t.className, t.processingInstruction, t.character],
+	[
+		'var(--literal)',
+		t.integer,
+		t.literal,
+		t.local,
+		t.labelName,
+		t.number,
+		t.bool,
+		t.inserted,
+		t.float,
+		t.attributeValue,
+	],
+]
+
+const createHighlightStyle = groups => groups.flatMap(([color, ...tags]) => tags.map(tag => ({ tag, color })))
+
+// Markdown-specific styles
+const sharedHeadings = {
+	textShadow: '0 0 14px currentColor',
+	fontWeight: 'bold',
+}
+
+const markdownStyles = [
+	{ tag: [t.heading], color: 'var(--primary)', fontWeight: '800' },
+	{ tag: [t.heading1], ...sharedHeadings, color: 'var(--string)' },
+	{ tag: [t.heading2], ...sharedHeadings, color: 'var(--property)' },
+	{ tag: [t.heading3], ...sharedHeadings, color: 'var(--operator)' },
+	{ tag: [t.heading4], ...sharedHeadings, color: 'var(--literal)' },
+	{ tag: [t.heading5], ...sharedHeadings, color: 'var(--keyword)' },
+	{ tag: [t.heading6], ...sharedHeadings, color: 'var(--regex)' },
+	{
+		tag: [t.strikethrough],
+		color: 'var(--literal)',
+		textDecoration: 'line-through',
+	},
+	{ tag: [t.strong], color: 'var(--meta)', fontWeight: '700' },
+	{ tag: [t.emphasis], color: 'var(--operator)', fontStyle: 'italic' },
+	{ tag: [t.link], color: 'var(--property)' },
+	{ tag: [t.url], color: 'var(--string)', textDecoration: 'wavy' },
+]
+
+const pandaHighlight = HighlightStyle.define([...createHighlightStyle(pandaGroups), ...markdownStyles])
+
+export const editorThemeExtensions = () => [
+	cmTheme,
+	syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
+	syntaxHighlighting(pandaHighlight),
+]

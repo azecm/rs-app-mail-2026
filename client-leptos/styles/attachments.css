@@ -1,0 +1,19 @@
+@layer components {
+    .attachments-container {
+        @apply flex gap-2 flex-wrap text-xs mt-1;
+        button {
+            @apply flex gap-1 cursor-pointer px-2 rounded border;
+            @apply  hover:text-sky-600 hover:border-sky-600;
+            @apply  dark:hover:text-sky-500 dark:hover:border-sky-300;
+        }
+    }
+    .attachment-label {
+        @apply max-w-30 overflow-hidden whitespace-nowrap text-ellipsis;
+    }
+    .attachment-upload__button {
+        @apply relative;
+    }
+    .attachment-upload__input {
+        @apply absolute left-0 top-0 w-full h-full opacity-0 cursor-pointer;
+    }
+}

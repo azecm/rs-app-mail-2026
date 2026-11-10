@@ -1,0 +1,11 @@
+@layer components {
+    .block-login {
+        @apply flex flex-col m-auto gap-4;
+        margin-top: 40vh;
+    }
+    .login-input {
+        @apply w-65 border rounded-sm px-2 py-1 outline-0;
+        @apply bg-gray-200 border-gray-300 focus:border-gray-600 text-gray-800;
+        @apply dark:bg-gray-700 dark:border-gray-600 dark:focus:border-gray-400 dark:text-gray-300;
+    }
+}

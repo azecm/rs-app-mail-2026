@@ -1,0 +1,48 @@
+@layer components {
+    .html-preview {
+        a {
+            @apply underline text-sky-600 dark:text-sky-300;
+        }
+        b,
+        strong {
+            @apply text-emerald-600 dark:text-lime-300;
+        }
+        i,
+        em {
+            @apply text-amber-700 dark:text-amber-300;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            @apply text-purple-600 dark:text-purple-300;
+        }
+        h1 {
+            @apply text-2xl;
+        }
+        h2 {
+            @apply text-xl;
+        }
+        h3 {
+            @apply text-lg;
+        }
+        > p {
+            @apply my-2;
+        }
+        > ul,
+        > ol {
+            @apply ml-5;
+            > li {
+                @apply my-2;
+            }
+        }
+        > ul {
+            @apply list-disc;
+        }
+        > ol {
+            @apply list-decimal;
+        }
+    }
+}

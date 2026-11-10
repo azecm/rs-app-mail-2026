@@ -1,0 +1,52 @@
+
+[package]
+name = "client-leptos"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+shared = { path = "../shared" }
+
+log = "0.4"
+console_log = "1.1"
+console_error_panic_hook = "0.1"
+
+leptos = { version = "0.8", features = ["csr"] }
+leptos-use = "0.19"
+
+toml = "1"
+bitcode = "0.6"
+hmac-sha256 = "1.1"
+
+gloo-net = "0.7"
+futures = "0.3"
+wasmtimer = "0.4"
+
+uuid = { version = "1", features = ["v4", "js"] }
+
+web-sys = { version = "0.3", features = [
+    "Window",
+    "Storage",
+    "Screen",
+    "Navigator",
+    #"HtmlElement",
+    #"HtmlAnchorElement",
+    #"Clipboard",
+    "Location",
+    "Blob",
+    "BlobPropertyBag",
+] }
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+
+pulldown-cmark = "0.13"
+pulldown-cmark-to-cmark = "22"
+
+[dependencies.getrandom_v02]
+package = "getrandom"
+version = "0.2"
+features = ["js"]
+
+[dependencies.getrandom]
+version = "0.4"
+features = ["wasm_js"]

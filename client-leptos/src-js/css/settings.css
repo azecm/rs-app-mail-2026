@@ -1,0 +1,355 @@
+/* ===== SETTINGS SYSTEM COMPONENTS ===== */
+
+/* Settings dialog - native HTML dialog element */
+#settings-system {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  background: var(--bg-alpha);
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 700px;
+  width: calc(90vw - 40px);
+  max-height: calc(90vh - 40px);
+  box-shadow: var(--shadow-strong);
+  backdrop-filter: blur(10px);
+  border: none;
+  color: var(--text);
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+
+  &::backdrop {
+    background: var(--bg-alpha);
+    backdrop-filter: blur(10px);
+  }
+}
+
+.settings-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  color: var(--secondary);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+  background: var(--bg-alpha);
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    color: var(--accent);
+    transform: scale(1.1);
+  }
+}
+
+/* Settings content */
+.settings-content {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.settings-section {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.settings-section-title {
+  margin: 0;
+  color: var(--accent);
+  font-size: 16px;
+  font-weight: 600;
+  font-family: Bungee, monospace;
+  border-bottom: 1px solid var(--text-alpha);
+  padding-bottom: 4px;
+}
+
+/* Shortcuts */
+.settings-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  min-width: 0;
+  overflow: visible;
+}
+
+.settings-item {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--bg-alpha);
+  border-radius: 16px;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  min-width: 0;
+  overflow: visible;
+  position: relative;
+
+  &:hover {
+    background: var(--accent-alpha);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px var(--accent-alpha);
+  }
+}
+
+.settings-item > span:first-of-type {
+  display: none;
+}
+
+.settings-key {
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  padding: 2px 12px 2px 2px;
+  font-size: 12px;
+  width: min-content;
+  font-family: "Monaspace Krypton", ui-monospace, monospace;
+  color: var(--bg);
+  font-weight: 600;
+  min-width: 28px;
+  text-align: center;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--primary) 30%, transparent);
+  white-space: nowrap;
+  display: inline-block;
+  position: relative;
+  z-index: 0;
+}
+
+/* Theme selector */
+.settings-theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+  min-width: 0;
+}
+
+.settings-theme-card {
+  background: var(--bg-alpha);
+  border: 2px solid transparent;
+  border-radius: 16px;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  min-width: 0;
+
+  &:hover {
+    background: var(--accent-alpha);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px var(--accent-alpha);
+  }
+
+  &.selected {
+    border-color: var(--accent);
+    background: var(--accent-alpha);
+  }
+}
+
+.settings-theme-name {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+  font-family: "Monaspace Krypton", system-ui, Helvetica, Arial, sans-serif;
+}
+
+.settings-theme-preview {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.settings-theme-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--text-alpha);
+}
+
+.settings-theme-card:has(.settings-theme-control-btn) {
+  display: grid;
+  place-items: center;
+}
+
+.settings-theme-control-btn {
+  width: max-content;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  color: currentColor;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Monaspace Krypton", system-ui, Helvetica, Arial, sans-serif;
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  overflow: visible;
+  opacity: 1;
+  z-index: 1;
+
+  iconify-icon {
+    opacity: 1 !important;
+    color: var(--accent);
+    mix-blend-mode: color-burn;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+    display: block;
+  }
+
+  > span:first-of-type {
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  > span:last-of-type {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%) translateY(-8px);
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    transition:
+      opacity 0.2s ease 0.1s,
+      transform 0.2s ease 0.1s;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-shadow: 0 0 8px currentColor;
+    color: var(--text);
+    z-index: 10000;
+    padding: 4px 8px;
+    white-space: nowrap;
+    background: var(--bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-strong);
+    pointer-events: none;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: var(--accent);
+    color: var(--bg);
+
+    iconify-icon {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    > span:last-of-type {
+      opacity: 1;
+      transform: translate(-50%, -50%) translateY(-8px);
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+    }
+  }
+}
+
+.settings-footer {
+  text-align: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--text-alpha);
+  color: var(--comment);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "Monaspace Krypton", system-ui, Helvetica, Arial, sans-serif;
+
+  .heart {
+    display: inline-block;
+    background: linear-gradient(
+      135deg,
+      #ff006e 0%,
+      #c01a8a 10%,
+      #8338ec 20%,
+      #5e5feb 30%,
+      #3a86ff 40%,
+      #9f1f01 50%,
+      #ff2002 60%,
+      #ff9f26 70%,
+      #ffbe0b 80%,
+      #ff8b35 90%,
+      #fb5607 100%
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 10s linear infinite;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  a {
+    color: var(--secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:nth-of-type(2) {
+      font-weight: bolder;
+      font-size: 14px;
+      color: var(--brand);
+    }
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+
+  .footer-issue {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 8px;
+    color: var(--primary);
+  }
+}
+
+.settings-version {
+  color: var(--comment);
+  font-weight: 600;
+  font-family: "Monaspace Krypton", ui-monospace, monospace;
+  font-size: 12px;
+  background: var(--bg-light);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+/* Mobile: Fullscreen */
+@media (max-width: 640px) {
+  #settings-system {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+    padding: 16px;
+    margin: 0;
+  }
+
+  .settings-shortcuts {
+    grid-template-columns: 1fr;
+  }
+}

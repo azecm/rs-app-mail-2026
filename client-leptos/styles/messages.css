@@ -1,0 +1,51 @@
+@layer components {
+    .messages-list {
+        @apply md:w-1/2;
+        max-height: calc(100vh - 60px);
+    }
+    .messages-items {
+        @apply flex flex-col gap-3;
+    }
+    .messages-content {
+        @apply flex flex-col gap-1 md:w-1/2 text-sm pr-2;
+        max-height: calc(100vh - 60px);
+    }
+    .message-container {
+        @apply flex flex-nowrap max-md:flex-row-reverse;
+        .message-action {
+            @apply shrink-0;
+            width: 40px;
+        }
+    }
+    .message-action {
+        @apply px-1 flex items-center justify-center cursor-pointer hover:text-orange-700 dark:hover:text-amber-400 hover:bg-gray-200 dark:hover:bg-gray-700;
+        svg {
+            @apply pointer-events-none;
+        }
+    }
+    .message-preview {
+        @apply overflow-hidden text-sm text-left cursor-pointer rounded px-1 grow;
+        @apply hover:bg-gray-200 dark:hover:bg-gray-700;
+        height: 65x;
+        div {
+            @apply pointer-events-none;
+        }
+    }
+    .message-date {
+        code {
+            @apply mr-2;
+        }
+    }
+    .message-address {
+        @apply text-sky-600 dark:text-sky-300;
+    }
+    .message-subject {
+        @apply text-base overflow-hidden text-ellipsis whitespace-nowrap;
+    }
+    .message-row {
+        @apply flex gap-2;
+    }
+    .message-body {
+        @apply mt-1;
+    }
+}

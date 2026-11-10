@@ -1,0 +1,10 @@
+/target
+static
+dist
+dist-js
+release
+node_modules
+.DS_Store
+.idea
+md-editor.mjs
+/.zed

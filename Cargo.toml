@@ -1,0 +1,45 @@
+
+[workspace]
+members = [
+    "server-salvo",
+    "shared",
+    "client-leptos",
+    "builder",
+    #"client-iced",
+    #"server-axum",
+    #"server-salvo-test",
+    #"client-egui",
+    #"md-editor",
+    #"egui_autocomplete",
+]
+resolver = "3"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+
+# https://doc.rust-lang.org/cargo/reference/profiles.html
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 'z'
+#strip = "symbols"
+
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+#[profile.wasm-release]
+#inherits = "release"
+#opt-level = 'z'
+#lto = true
+#codegen-units = 1
+#panic = "abort"
+
+[profile.server-dev]
+inherits = "dev"
+
+[profile.android-dev]
+inherits = "dev"
+
+[workspace.dependencies]

@@ -1,0 +1,51 @@
+/* html[data-theme="dracula"][data-mode="dark"] */
+/* [data-theme="dracula"][data-mode="light"] */
+html {
+    --bg: #f4f7fb;
+    --bg-light: #ffffff;
+    --text: #26272b;
+    --brand: #b0476a;
+    --accent: #0366d6;
+    --primary: #8b5cf6;
+    --secondary: #238a4b;
+    --comment: #6a737d;
+    --meta: #e36209;
+    --operator: #6f42c1;
+    --keyword: #b0476a;
+    --regex: #e36209;
+    --property: #0366d6;
+    --string: #0b3a62;
+    --literal: #6f42c1;
+    --hint: #238a4b;
+
+    --success: #238a4b;
+    --warning: #e36209;
+    --info: #0366d6;
+    --error: #b0476a;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        --bg: #282a36;
+        --bg-light: #44475a;
+        --text: #f8f8f2;
+        --brand: #ff79c6;
+        --accent: #8be9fd;
+        --primary: #e879f9;
+        --secondary: #50fa7b;
+        --comment: #6272a4;
+        --meta: #ffb86c;
+        --operator: #bd93f9;
+        --keyword: #ff79c6;
+        --regex: #ffb86c;
+        --property: #8be9fd;
+        --string: #f1fa8c;
+        --literal: #bd93f9;
+        --hint: #50fa7b;
+
+        --success: #50fa7b;
+        --warning: #ffb86c;
+        --info: #8be9fd;
+        --error: #ff5555;
+    }
+}

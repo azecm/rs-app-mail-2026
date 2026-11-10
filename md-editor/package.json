@@ -1,0 +1,27 @@
+{
+  "name": "md-editor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "vite build",
+    "_dev": "vite",
+    "_gen:hljs": "node scripts/hljs.js",
+    "_gen:social": "bash scripts/gen-social.sh",
+    "_gen:themes": "bash scripts/gen-themes.sh",
+    "_preview": "vite preview",
+    "_check": "biome check .",
+    "_fix": "biome check --write .",
+    "_fmt": "biome format --write ."
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@codemirror/lang-markdown": "^6.5.0",
+    "@codemirror/state": "^6.6.0",
+    "@codemirror/view": "^6.43.0"
+  },
+  "devDependencies": {
+    "vite": "^8.0.16"
+  }
+}

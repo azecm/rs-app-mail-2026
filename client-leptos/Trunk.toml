@@ -1,0 +1,22 @@
+# https://trunk-rs.github.io/trunk/guide/
+
+[build]
+#target = "index.html"
+#html_output = "client-web.tmp"
+minify = "on_release"
+#dist = "../public-dev"
+
+#[[hooks]]
+#stage = "post_build"
+#command = "/bin/zsh"
+#command_arguments = ["/home/user/Документы/dev/rs-app-mail-leptos/bin/build-client-after.sh"]
+
+[watch]
+watch = ["./src", "./Cargo.toml", "./static", "../shared"]
+
+[serve]
+port = 8081
+
+[[proxy]]
+rewrite = "/api/"
+backend = "http://localhost:8443/api/"

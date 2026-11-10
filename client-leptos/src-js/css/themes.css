@@ -1,0 +1,651 @@
+/* ===== THEME DEFINITIONS ===== */
+
+html[data-theme="panda"][data-mode="dark"] {
+    --bg: #1a0f1f;
+    --bg-light: #2d1a2d;
+    --text: #f0f0e8;
+    --brand: #ff1100;
+    --accent: #8866ff;
+    --primary: #bb66ff;
+    --secondary: #22aa88;
+    --comment: #bbbbbb;
+    --meta: #ff1100;
+    --operator: #bb88ee;
+    --keyword: #ff88bb;
+    --regex: #ff99cc;
+    --property: #4488ff;
+    --string: #22aa88;
+    --literal: #ffbb66;
+    --hint: #8866dd;
+
+    --success: #22bb11;
+    --warning: #ffaa00;
+    --info: #1199cc;
+    --error: #ff1100;
+}
+
+html[data-theme="panda"][data-mode="light"] {
+    --bg: #f5f5f0;
+    --bg-light: #ffffff;
+    --text: #1a1a1a;
+    --brand: #d73a49;
+    --accent: #0366d6;
+    --primary: #8b5cf6;
+    --secondary: #28a745;
+    --comment: #6a737d;
+    --meta: #6f42c1;
+    --operator: #0366d6;
+    --keyword: #d73a49;
+    --regex: #e36209;
+    --property: #0366d6;
+    --string: #032f62;
+    --literal: #6f42c1;
+    --hint: #28a745;
+
+    --success: #22bb11;
+    --warning: #ffaa00;
+    --info: #1199cc;
+    --error: #cc6600;
+}
+
+html[data-theme="muted"][data-mode="dark"] {
+    --bg: #1a1a1a;
+    --bg-light: #2a2a2a;
+    --text: #e0e0e0;
+    --brand: #b3667a;
+    --accent: #7a7ab3;
+    --primary: #a855f7;
+    --secondary: #66a3a3;
+    --comment: #888888;
+    --meta: #9a7ab3;
+    --operator: #66a3a3;
+    --keyword: #b3667a;
+    --regex: #b37a9a;
+    --property: #7a9ab3;
+    --string: #7ab37a;
+    --literal: #b3a366;
+    --hint: #9a7ab3;
+
+    --success: #66a366;
+    --warning: #b3a366;
+    --info: #669ab3;
+    --error: #b3667a;
+}
+
+html[data-theme="muted"][data-mode="light"] {
+    --bg: #f5f5f5;
+    --bg-light: #ffffff;
+    --text: #333333;
+    --brand: #8c4a5a;
+    --accent: #5a5a8c;
+    --primary: #9333ea;
+    --secondary: #5a8c5a;
+    --comment: #666666;
+    --meta: #7a4a8c;
+    --operator: #5a7a8c;
+    --keyword: #8c4a5a;
+    --regex: #8c4a7a;
+    --property: #5a7a8c;
+    --string: #5a8c5a;
+    --literal: #8c7a4a;
+    --hint: #7a4a8c;
+
+    --success: #5a8c5a;
+    --warning: #8c7a4a;
+    --info: #5a7a8c;
+    --error: #8c4a5a;
+}
+
+html[data-theme="nord"][data-mode="dark"] {
+    --bg: #2e3440;
+    --bg-light: #3b4252;
+    --text: #d8dee9;
+    --brand: #88c0d0;
+    --accent: #5e81ac;
+    --primary: #c084fc;
+    --secondary: #a3be8c;
+    --comment: #6c7a8a;
+    --meta: #88c0d0;
+    --operator: #d08770;
+    --keyword: #b48ead;
+    --regex: #bf616a;
+    --property: #81a1c1;
+    --string: #a3be8c;
+    --literal: #ebcb8b;
+    --hint: #88c0d0;
+
+    --success: #a3be8c;
+    --warning: #ebcb8b;
+    --info: #88c0d0;
+    --error: #bf616a;
+}
+
+html[data-theme="nord"][data-mode="light"] {
+    --bg: #eceff4;
+    --bg-light: #ffffff;
+    --text: #2e3440;
+    --brand: #5e81ac;
+    --accent: #88c0d0;
+    --primary: #a855f7;
+    --secondary: #a3be8c;
+    --comment: #4c566a;
+    --meta: #5e81ac;
+    --operator: #d08770;
+    --keyword: #b48ead;
+    --regex: #bf616a;
+    --property: #5e81ac;
+    --string: #a3be8c;
+    --literal: #d08770;
+    --hint: #88c0d0;
+
+    --success: #a3be8c;
+    --warning: #d08770;
+    --info: #5e81ac;
+    --error: #bf616a;
+}
+
+html[data-theme="monokai"][data-mode="dark"] {
+    --bg: #272822;
+    --bg-light: #3e3d32;
+    --text: #f8f8f2;
+    --brand: #f92672;
+    --accent: #66d9ef;
+    --primary: #d8b4fe;
+    --secondary: #a6e22e;
+    --comment: #75715e;
+    --meta: #fd971f;
+    --operator: #66d9ef;
+    --keyword: #f92672;
+    --regex: #fd971f;
+    --property: #66d9ef;
+    --string: #e6db74;
+    --literal: #ae81ff;
+    --hint: #a6e22e;
+
+    --success: #a6e22e;
+    --warning: #e6db74;
+    --info: #66d9ef;
+    --error: #f92672;
+}
+
+html[data-theme="monokai"][data-mode="light"] {
+    --bg: #fbf8f2;
+    --bg-light: #ffffff;
+    --text: #2b2a28;
+    --brand: #c6286b;
+    --accent: #006b8f;
+    --primary: #6f42c1;
+    --secondary: #2d8f3a;
+    --comment: #6a737d;
+    --meta: #a66bff;
+    --operator: #006b8f;
+    --keyword: #c6286b;
+    --regex: #d65a07;
+    --property: #006b8f;
+    --string: #8a5b00;
+    --literal: #a66bff;
+
+    --hint: #2d8f3a;
+    --success: #2d8f3a;
+    --warning: #d65a07;
+    --info: #006b8f;
+    --error: #c6286b;
+}
+
+html[data-theme="dracula"][data-mode="dark"] {
+    --bg: #282a36;
+    --bg-light: #44475a;
+    --text: #f8f8f2;
+    --brand: #ff79c6;
+    --accent: #8be9fd;
+    --primary: #e879f9;
+    --secondary: #50fa7b;
+    --comment: #6272a4;
+    --meta: #ffb86c;
+    --operator: #bd93f9;
+    --keyword: #ff79c6;
+    --regex: #ffb86c;
+    --property: #8be9fd;
+    --string: #f1fa8c;
+    --literal: #bd93f9;
+    --hint: #50fa7b;
+
+    --success: #50fa7b;
+    --warning: #ffb86c;
+    --info: #8be9fd;
+    --error: #ff5555;
+}
+
+html[data-theme="dracula"][data-mode="light"] {
+    --bg: #f4f7fb;
+    --bg-light: #ffffff;
+    --text: #26272b;
+    --brand: #b0476a;
+    --accent: #0366d6;
+    --primary: #8b5cf6;
+    --secondary: #238a4b;
+    --comment: #6a737d;
+    --meta: #e36209;
+    --operator: #6f42c1;
+    --keyword: #b0476a;
+    --regex: #e36209;
+    --property: #0366d6;
+    --string: #0b3a62;
+    --literal: #6f42c1;
+    --hint: #238a4b;
+
+    --success: #238a4b;
+    --warning: #e36209;
+    --info: #0366d6;
+    --error: #b0476a;
+}
+
+html[data-theme="solarized"][data-mode="dark"] {
+    --bg: #002b36;
+    --bg-light: #073642;
+    --text: #839496;
+    --brand: #d33682;
+    --accent: #268bd2;
+    --primary: #c084fc;
+    --secondary: #859900;
+    --comment: #586e75;
+    --meta: #2aa198;
+    --operator: #cb4b16;
+    --keyword: #6c71c4;
+    --regex: #dc322f;
+    --property: #268bd2;
+    --string: #859900;
+    --literal: #b58900;
+    --hint: #2aa198;
+
+    --success: #859900;
+    --warning: #b58900;
+    --info: #268bd2;
+    --error: #dc322f;
+}
+
+html[data-theme="solarized"][data-mode="light"] {
+    --bg: #fdf6e3;
+    --bg-light: #eee8d5;
+    --text: #657b83;
+    --brand: #d33682;
+    --accent: #268bd2;
+    --primary: #c084fc;
+    --secondary: #859900;
+    --comment: #93a1a1;
+    --meta: #2aa198;
+    --operator: #cb4b16;
+    --keyword: #6c71c4;
+    --regex: #dc322f;
+    --property: #268bd2;
+    --string: #859900;
+    --literal: #b58900;
+    --hint: #2aa198;
+
+    --success: #859900;
+    --warning: #b58900;
+    --info: #268bd2;
+    --error: #dc322f;
+}
+
+html[data-theme="github"][data-mode="dark"] {
+    --bg: #0d1117;
+    --bg-light: #161b22;
+    --text: #e6edf3;
+    --brand: #f85149;
+    --accent: #58a6ff;
+    --primary: #d8b4fe;
+    --secondary: #7ee787;
+    --comment: #7d8590;
+    --meta: #ffa657;
+    --operator: #f85149;
+    --keyword: #ff7b72;
+    --regex: #ffa657;
+    --property: #79c0ff;
+    --string: #a5d6ff;
+    --literal: #d2a8ff;
+    --hint: #7ee787;
+
+    --success: #7ee787;
+    --warning: #ffa657;
+    --info: #58a6ff;
+    --error: #f85149;
+}
+
+html[data-theme="github"][data-mode="light"] {
+    --bg: #ffffff;
+    --bg-light: #f6f8fa;
+    --text: #24292f;
+    --brand: #d73a49;
+    --accent: #0969da;
+    --primary: #8b5cf6;
+    --secondary: #28a745;
+    --comment: #6a737d;
+    --meta: #e36209;
+    --operator: #0969da;
+    --keyword: #d73a49;
+    --regex: #e36209;
+    --property: #0969da;
+    --string: #032f62;
+    --literal: #6f42c1;
+    --hint: #28a745;
+
+    --success: #28a745;
+    --warning: #e36209;
+    --info: #0969da;
+    --error: #d73a49;
+}
+
+html[data-theme="one-dark"][data-mode="dark"] {
+    --bg: #282c34;
+    --bg-light: #21252b;
+    --text: #abb2bf;
+    --brand: #e06c75;
+    --accent: #61afef;
+    --primary: #c084fc;
+    --secondary: #98c379;
+    --comment: #5c6370;
+    --meta: #d19a66;
+    --operator: #56b6c2;
+    --keyword: #c678dd;
+    --regex: #d19a66;
+    --property: #61afef;
+    --string: #98c379;
+    --literal: #e5c07b;
+    --hint: #56b6c2;
+
+    --success: #98c379;
+    --warning: #e5c07b;
+    --info: #61afef;
+    --error: #e06c75;
+}
+
+html[data-theme="one-dark"][data-mode="light"] {
+    --bg: #fafafa;
+    --bg-light: #ffffff;
+    --text: #383a42;
+    --brand: #e45649;
+    --accent: #0184bc;
+    --primary: #a855f7;
+    --secondary: #50a14f;
+    --comment: #a0a1a7;
+    --meta: #986801;
+    --operator: #0997b3;
+    --keyword: #a626a4;
+    --regex: #986801;
+    --property: #0184bc;
+    --string: #50a14f;
+    --literal: #c18401;
+    --hint: #0997b3;
+
+    --success: #50a14f;
+    --warning: #c18401;
+    --info: #0184bc;
+    --error: #e45649;
+}
+
+html[data-theme="gruvbox"][data-mode="dark"] {
+    --bg: #282828;
+    --bg-light: #3c3836;
+    --text: #ebdbb2;
+    --brand: #fb4934;
+    --accent: #83a598;
+    --primary: #e879f9;
+    --secondary: #b8bb26;
+    --comment: #928374;
+    --meta: #fe8019;
+    --operator: #83a598;
+    --keyword: #fb4934;
+    --regex: #fe8019;
+    --property: #83a598;
+    --string: #b8bb26;
+    --literal: #fabd2f;
+    --hint: #8ec07c;
+
+    --success: #b8bb26;
+    --warning: #fabd2f;
+    --info: #83a598;
+    --error: #fb4934;
+}
+
+html[data-theme="gruvbox"][data-mode="light"] {
+    --bg: #fbf1c7;
+    --bg-light: #f2e5bc;
+    --text: #3c3836;
+    --brand: #cc241d;
+    --accent: #458588;
+    --primary: #c084fc;
+    --secondary: #98971a;
+    --comment: #928374;
+    --meta: #b16286;
+    --operator: #83a598;
+    --keyword: #cc241d;
+    --regex: #d65d0e;
+    --property: #458588;
+    --string: #98971a;
+    --literal: #d79921;
+    --hint: #689d6a;
+
+    --success: #98971a;
+    --warning: #d79921;
+    --info: #458588;
+    --error: #cc241d;
+}
+
+html[data-theme="tokyo-night"][data-mode="dark"] {
+    --bg: #1a1b26;
+    --bg-light: #24283b;
+    --text: #a9b1d6;
+    --brand: #f7768e;
+    --accent: #7aa2f7;
+    --primary: #d8b4fe;
+    --secondary: #9ece6a;
+    --comment: #565f89;
+    --meta: #73daca;
+    --operator: #f7768e;
+    --keyword: #bb9af7;
+    --regex: #ff9e64;
+    --property: #7aa2f7;
+    --string: #9ece6a;
+    --literal: #e0af68;
+    --hint: #73daca;
+
+    --success: #9ece6a;
+    --warning: #e0af68;
+    --info: #7aa2f7;
+    --error: #f7768e;
+}
+
+html[data-theme="tokyo-night"][data-mode="light"] {
+    --bg: #e8e9ed;
+    --bg-light: #ffffff;
+    --text: #2d3748;
+    --brand: #e53e3e;
+    --accent: #3182ce;
+    --primary: #a855f7;
+
+    --secondary: #38a169;
+    --comment: #718096;
+    --meta: #319795;
+    --operator: #e53e3e;
+    --keyword: #805ad5;
+    --regex: #dd6b20;
+    --property: #3182ce;
+    --string: #38a169;
+    --literal: #d69e2e;
+    --hint: #319795;
+
+    --success: #38a169;
+    --warning: #d69e2e;
+    --info: #3182ce;
+    --error: #e53e3e;
+}
+
+html[data-theme="ayu"][data-mode="dark"] {
+    --bg: #1f2430;
+    --bg-light: #232834;
+    --text: #cbccc6;
+    --brand: #ffcc66;
+    --accent: #73d0ff;
+    --primary: #d4bfff;
+    --secondary: #bae67e;
+    --comment: #5c6773;
+    --meta: #5ccfe6;
+    --operator: #73d0ff;
+    --keyword: #ffa759;
+    --regex: #95e6cb;
+    --property: #5ccfe6;
+    --string: #bae67e;
+    --literal: #d4bfff;
+    --hint: #73d0ff;
+
+    --success: #bae67e;
+    --warning: #ffa759;
+    --info: #73d0ff;
+    --error: #ff3333;
+}
+
+html[data-theme="ayu"][data-mode="light"] {
+    --bg: #fafafa;
+    --bg-light: #ffffff;
+    --text: #5c6773;
+    --brand: #ff9940;
+    --accent: #399ee6;
+    --primary: #a37acc;
+    --secondary: #86b300;
+    --comment: #abb0b6;
+    --meta: #55b4d4;
+    --operator: #399ee6;
+    --keyword: #fa8d3e;
+    --regex: #4cbf99;
+    --property: #55b4d4;
+    --string: #86b300;
+    --literal: #a37acc;
+    --hint: #399ee6;
+
+    --success: #86b300;
+    --warning: #fa8d3e;
+    --info: #399ee6;
+    --error: #f51818;
+}
+
+html[data-theme="catppuccin"][data-mode="dark"] {
+    --bg: #1e1e2e;
+    --bg-light: #313244;
+    --text: #cdd6f4;
+    --brand: #f38ba8;
+    --accent: #89b4fa;
+    --primary: #cba6f7;
+    --secondary: #a6e3a1;
+    --comment: #6c7086;
+    --meta: #fab387;
+    --operator: #94e2d5;
+    --keyword: #f38ba8;
+    --regex: #fab387;
+    --property: #89b4fa;
+    --string: #a6e3a1;
+    --literal: #f9e2af;
+    --hint: #89dceb;
+
+    --success: #a6e3a1;
+    --warning: #f9e2af;
+    --info: #89b4fa;
+    --error: #f38ba8;
+}
+
+html[data-theme="catppuccin"][data-mode="light"] {
+    --bg: #eff1f5;
+    --bg-light: #ccd0da;
+    --text: #4c4f69;
+    --brand: #d20f39;
+    --accent: #1e66f5;
+    --primary: #8839ef;
+    --secondary: #40a02b;
+    --comment: #9ca0b0;
+    --meta: #fe640b;
+    --operator: #179299;
+    --keyword: #d20f39;
+    --regex: #fe640b;
+    --property: #1e66f5;
+    --string: #40a02b;
+    --literal: #df8e1d;
+    --hint: #04a5e5;
+
+    --success: #40a02b;
+    --warning: #df8e1d;
+    --info: #1e66f5;
+    --error: #d20f39;
+}
+
+/* Default theme fallback */
+html:not([data-theme]) {
+    --bg: #1a0f1f;
+    --bg-light: #2d1a2d;
+    --text: #f0f0e8;
+    --brand: #ff1100;
+    --accent: #8866ff;
+    --primary: #bb66ff;
+    --secondary: #22aa88;
+    --comment: #bbbbbb;
+    --meta: #ff1100;
+    --operator: #bb88ee;
+    --keyword: #ff88bb;
+    --regex: #ff99cc;
+    --property: #4488ff;
+    --string: #22aa88;
+    --literal: #ffbb66;
+    --hint: #8866dd;
+
+    --success: #22bb11;
+    --warning: #ffaa00;
+    --info: #1199cc;
+    --error: #ff1100;
+}
+
+html[data-theme="tomorrow"][data-mode="dark"] {
+    --bg: #1d1f21;
+    --bg-light: #282a2e;
+    --text: #c5c8c6;
+    --brand: #cc6666;
+    --accent: #8abeb7;
+    --primary: #c5c8c6;
+    --secondary: #b5bd68;
+    --comment: #b4b7b4;
+    --meta: #c5c8c6;
+    --operator: #c5c8c6;
+    --keyword: #b294bb;
+    --regex: #8abeb7;
+    --property: #c5c8c6;
+    --string: #b5bd68;
+    --literal: #de935f;
+    --hint: #f0c674;
+
+    --success: #b5bd68;
+    --warning: #de935f;
+    --info: #8abeb7;
+    --error: #cc6666;
+}
+
+html[data-theme="tomorrow"][data-mode="light"] {
+    --bg: #ffffff;
+    --bg-light: #e0e0e0;
+    --text: #373b41;
+    --brand: #c82829;
+    --accent: #3e999f;
+    --primary: #373b41;
+    --secondary: #718c00;
+    --comment: #969896;
+    --meta: #373b41;
+    --operator: #373b41;
+    --keyword: #8959a8;
+    --regex: #3e999f;
+    --property: #373b41;
+    --string: #718c00;
+    --literal: #f5871f;
+    --hint: #eab700;
+
+    --success: #718c00;
+    --warning: #f5871f;
+    --info: #3e999f;
+    --error: #c82829;
+}

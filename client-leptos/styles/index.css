@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@import "./login";
+@import "./main";
+@import "./header";
+@import "./notes";
+@import "./modal";
+@import "./editor";
+@import "./messages";
+@import "./attachments";
+@import "./html";
+
+@layer components {
+    .block-hello {
+        @apply m-auto select-none pointer-events-none;
+        margin-top: 40vh;
+        font-size: 40px;
+    }
+}
+
+@layer base {
+    html,
+    body {
+        @apply flex m-0 p-0 w-full h-full overflow-hidden;
+        @apply bg-gray-400 dark:bg-gray-900 text-gray-600 dark:text-gray-400;
+    }
+}

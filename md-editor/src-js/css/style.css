@@ -1,0 +1,104 @@
+:root {
+  --bar-h: 50px;
+  --radius: 14px;
+  --pad: 8px;
+
+  --bg-alpha: color-mix(in srgb, var(--bg) 40%, transparent);
+  --text-alpha: color-mix(in srgb, var(--text) 10%, transparent);
+  --accent-alpha: color-mix(in srgb, var(--accent) 20%, transparent);
+  --brand-alpha: color-mix(in srgb, var(--brand) 30%, transparent);
+
+  --shadow: 0 0 20px currentColor;
+  --shadow-strong: 0 0 24px color-mix(in srgb, black 32%, transparent);
+}
+
+html {
+  font-family: "Monaspace Krypton", system-ui, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--bg);
+  width: 100%;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg) var(--bg-light);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--comment);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* Profiler overlay */
+.profiler-overlay {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 8px 12px;
+  font-family: "Monaspace Krypton", monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  mix-blend-mode: hard-light;
+  min-width: 20px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  user-select: none;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.profiler-overlay.good {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.2),
+    rgba(147, 51, 234, 0.2)
+  );
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.profiler-overlay.ok {
+  background: linear-gradient(
+    135deg,
+    rgba(147, 51, 234, 0.2),
+    rgba(236, 72, 153, 0.2)
+  );
+  border-color: rgba(147, 51, 234, 0.3);
+}
+
+.profiler-overlay.bad {
+  background: linear-gradient(
+    135deg,
+    rgba(236, 72, 153, 0.2),
+    rgba(239, 68, 68, 0.2)
+  );
+  border-color: rgba(236, 72, 153, 0.3);
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}

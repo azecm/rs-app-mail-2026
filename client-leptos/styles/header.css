@@ -1,0 +1,21 @@
+@layer components {
+    .header-container {
+        @apply grid gap-1 max-w-5xl m-auto;
+        @apply bg-stone-300 dark:bg-stone-800;
+        grid-template-columns: repeat(8, 1fr);
+    }
+    .header-btn {
+        @apply block py-2 px-1 text-center overflow-hidden whitespace-nowrap text-ellipsis cursor-pointer;
+        @apply hover:bg-stone-200 dark:hover:bg-stone-700;
+        &.selected {
+            @apply bg-slate-100 dark:bg-slate-700;
+            @apply hover:bg-slate-50 dark:hover:bg-slate-600;
+        }
+        svg {
+            @apply m-auto md:hidden;
+        }
+        span {
+            @apply max-md:hidden;
+        }
+    }
+}
